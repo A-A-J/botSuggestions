@@ -8,28 +8,41 @@ module.exports = {
         if(message.channel.type !== 0) return;
         try {
             if (message.channel.id == config.channel){
-                try {                    
+                try {
                     if(message.mentions.repliedUser) return message.delete();
-                    message.react('👍🏻');
-                    message.react('👎🏻');
-                    const messageThread = await message.startThread({
-                        name: `${message.author.username}-مناقشة-اقتراح`,
-                        autoArchiveDuration: 60
-                    });
-                    
-                    message.guild.channels.cache.find(Channel => Channel.id === messageThread.id).send({
-                        embeds:[
+                    if(config.displyShowSuggestions == 0){
+                        message.delete()
+                        message.channel.send({embeds:[
                             new EmbedBuilder()
-                                .setTitle("قوانين روم الاقتراحات")
-                                .setDescription(rules.map((r) => `- ${r.t}`).join('\n'))
-                                .setColor(0x8302fa)
-                                .setTimestamp()
-                        ]
+                            .setAuthor({ name: message.author.username, iconURL: message.author.displayAvatarURL({dynamic: true}) })
+                            .setThumbnail(message.author.displayAvatarURL({dynamic:true}))
+                            .setDescription(`> ${message.content}`)
+                        ]}).then((m) => {
+                            m.react('👍🏻');
+                            m.react('👎🏻');
+                        })
                         
-                    }).then((msg) => msg.pin())
+                        message.channel.send({content:config.line})
+                    }else{
+                        const messageThread = await message.startThread({
+                            name: `${message.author.username}-مناقشة-اقتراح`,
+                            autoArchiveDuration: 60
+                        });
+                        message.react('👍🏻');
+                        message.react('👎🏻');
+                        message.guild.channels.cache.find(Channel => Channel.id === messageThread.id).send({
+                            embeds:[
+                                new EmbedBuilder()
+                                    .setTitle("قوانين روم الاقتراحات")
+                                    .setDescription(rules.map((r) => `- ${r.t}`).join('\n'))
+                                    .setColor(0x8302fa)
+                                    .setTimestamp()
+                            ]
+                        }).then((msg) => msg.pin())
+                    }
                     return
                 } catch (error) {
-                    message.channel.permissionOverwrites.set([ { id: message.guild.roles.everyone.id,  deny:'SendMessages' } ])
+                    // message.channel.permissionOverwrites.set([ { id: message.guild.roles.everyone.id,  deny:'SendMessages' } ])
                     message.reply(`تم إغلاق روم الاقتراحات مؤقتًا بسبب ظهور مشكلة برمجية، سيتم إتاحة الروم خلال الساعات القادمة!`)
                     console.error(error)
                 }

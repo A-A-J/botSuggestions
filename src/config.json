@@ -1,6 +1,8 @@
 {
-        "token": "",
-        "clientID": "",
+        "token": "MTAzNjM5MTIzNTYwMDAwMzE5Mg.GWnz_6.KeRAvOhmFNdfFGiDBRGXf6gvKwb5HbSUFXbtT0",
+        "clientID": "1036391235600003192",
+        "line": "https://images-ext-1.discordapp.net/external/n0_f4VCIgSo-lh3b5rhV3gXcC4_lYBbakbM_D5-yc9s/https/cdn.discordapp.com/avatars/927741280946094131/ae0b777b75d592898528874540bb88ec.webp",
+        "displyShowSuggestions": 0,
         "prefix": "_",
         "channel": "1036560496494661632"
 }
