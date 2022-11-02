@@ -1,16 +1,48 @@
 {
-    "languages"             : "إعدادات_اللغة",
-    "languages_des"         : "تغيير اللغة الافتراضية للبوت",
-    "languages_choose"      : "أختر اللغة الافتراضية",
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    "Lang":"English",
-    "Flag":"🇺🇸"
+    "default_by": "by",
+    "default_yes": "Yes",
+    "default_no": "No",
+    "default_type": "type..",
+    "languages": "language_settings",
+    "languages_des": "Change the default language of the bot",
+    "languages_choose": "Choose the default language",
+    "languages_successfully": "Default language settings have been changed successfully",
+    "setting": "Settings",
+    "setting_des": "Control bot settings",
+    "setting_info": "Information about the bot",
+    "setting_dev": "Developer",
+    "setting_bot": "Bots",
+    "setting_commands": "Slash command",
+    "setting_prefix": "Prefix command",
+    "setting_explanation_u": "Explanation of use",
+    "enterPrefix": "Enter the prefix code",
+    "enterIdChannel": "Enter channel ID",
+    "enterLine": "Enter the link to the line image",
+    "setting_explanation_ds": "- First choose the channel dedicated to receiving suggestions\n- You can control the display of suggestions by clicking on the display settings button\n- If you encounter problems or have a request you can contact the developer:",
+    "setting_successfully": "The new modifications of the bot have been applied and are:",
+    "setting_channel": "The Channel",
+    "setting_line": "Line image",
+    "setting_prefixx": "Prefix",
+    "Discussion-Suggestion": "Discussion-Proposal",
+    "Suggestion-ch-rules": "Suggestions Channel Laws",
+    "status_channel": "status_suggestions_channel",
+    "status_channel_des": "Control the permissions of the suggestions channel",
+    "choose_status": "Enter what you want to do to the suggestions channel",
+    "alert_des": "Do you want to notify all users?",
+    "open_channel": "Open the channel",
+    "close_channel": "Close the channel",
+    "status_successfully": "Suggestions channel permissions have been successfully updated",
+    "close_channel_des": "Hello, the suggestions channel has been closed to filter suggestions. It will be available in the coming hours",
+    "open_channel_des": "Hello, the suggestions channel has been made available! Share your 😀 thoughts with us",
+    "rulesSuggestionChannel": [
+        "You have to respect the responses of others.",
+        "Deviation from the path of the proposal rum is not allowed",
+        "Sharp disputes are not allowed if you do not accept the proposal",
+        "In case you don't like the suggestion, click on the disLike emoji",
+        "Repetitive replies (SPAM) are not allowed",
+        "General server rules are applied within this rom."
+    ],
+    "message_error_channel": "The suggestions ROM has been temporarily closed due to a software issue, the ROM will be available in the coming hours!",
+    "Lang": "English",
+    "Flag": "🇺🇸"
 }
