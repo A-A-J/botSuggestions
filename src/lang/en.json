@@ -3,11 +3,13 @@
     "default_yes": "Yes",
     "default_no": "No",
     "default_type": "type..",
+    
     "languages": "language_settings",
     "languages_des": "Change the default language of the bot",
     "languages_choose": "Choose the default language",
     "languages_successfully": "Default language settings have been changed successfully",
-    "setting": "Settings",
+
+    "setting": "settings",
     "setting_des": "Control bot settings",
     "setting_info": "Information about the bot",
     "setting_dev": "Developer",
@@ -23,6 +25,7 @@
     "setting_channel": "The Channel",
     "setting_line": "Line image",
     "setting_prefixx": "Prefix",
+
     "Discussion-Suggestion": "Discussion-Proposal",
     "Suggestion-ch-rules": "Suggestions Channel Laws",
     "status_channel": "status_suggestions_channel",
@@ -34,6 +37,7 @@
     "status_successfully": "Suggestions channel permissions have been successfully updated",
     "close_channel_des": "Hello, the suggestions channel has been closed to filter suggestions. It will be available in the coming hours",
     "open_channel_des": "Hello, the suggestions channel has been made available! Share your 😀 thoughts with us",
+    
     "rulesSuggestionChannel": [
         "You have to respect the responses of others.",
         "Deviation from the path of the proposal rum is not allowed",
@@ -42,7 +46,9 @@
         "Repetitive replies (SPAM) are not allowed",
         "General server rules are applied within this rom."
     ],
+    
     "message_error_channel": "The suggestions ROM has been temporarily closed due to a software issue, the ROM will be available in the coming hours!",
+    
     "Lang": "English",
     "Flag": "🇺🇸"
 }

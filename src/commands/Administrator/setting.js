@@ -16,7 +16,7 @@ module.exports = {
         {name:lang('setting_dev'),value:'<@927741280946094131>', inline:true},
         {name:lang('setting_bot'),value:`<@${interaction.applicationId}>`, inline:true},
         {name: '\u200b', value: `\u200b`, inline: true },
-        {name:`${lang('setting_commands')} (/)`,value:`${client.prefix}close\n${client.prefix}ping`, inline:true},
+        {name:`${lang('setting_commands')} (/)`,value:`/close\n/ping`, inline:true},
         {name:`${lang('setting_prefix')} (${config.prefix})`,value:`${config.prefix}ping`, inline:true},
         {name: '\u200b', value: `\u200b`, inline: true },
       )
