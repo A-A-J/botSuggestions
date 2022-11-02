@@ -2,6 +2,8 @@
    botSuggestions
 </h1>
 
+![image](https://user-images.githubusercontent.com/52822865/199390463-71972180-41fa-4403-a076-227c5070f208.png)
+
 #Features
 - Very smooth when making a suggestion
 - You can modify the prefix and channel ID through the setting command
