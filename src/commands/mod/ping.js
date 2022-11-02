@@ -17,7 +17,7 @@ module.exports = {
     PrefixCommand: {
       async execute(message, client, args) {
         let now_time = Date.now();
-        const msg = await message.reply({ content:`thinking...` })
+        const msg = await message.reply({ content:lang('default_type') })
         await msg.edit({content: `🏓 Server latency is ${Date.now() - now_time}ms, shard latency is ${Math.round(client.ws.ping)}ms` });
       },
     },

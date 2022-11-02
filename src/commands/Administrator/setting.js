@@ -4,30 +4,30 @@ const ms = require('ms')
 const fs = require("fs")
 module.exports = {
   data: new SlashCommandBuilder()
-  .setName("setting")
-  .setDescription("list commands bot")
+  .setName(lang('setting'))
+  .setDescription(lang('setting_des'))
   .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
   async execute(interaction, client){
     await interaction.deferReply({ ephemeral: true })
     const embed = new EmbedBuilder()
-      .setTitle("Information about the bot")
+      .setTitle(lang('setting_info'))
       .setThumbnail(interaction.guild.iconURL({ dynamic: true, size: 1024}))
       .addFields(
-        {name:`Dev`,value:'<@927741280946094131>', inline:true},
-        {name:'Bot',value:`<@${interaction.applicationId}>`, inline:true},
+        {name:lang('setting_dev'),value:'<@927741280946094131>', inline:true},
+        {name:lang('setting_bot'),value:`<@${interaction.applicationId}>`, inline:true},
         {name: '\u200b', value: `\u200b`, inline: true },
-        {name:`Commands (${client.prefix})`,value:`${client.prefix}close\n${client.prefix}ping`, inline:true},
-        {name:'Commands (/)',value:'/setting\n/ping\n/close', inline:true},
+        {name:`${lang('setting_commands')} (/)`,value:`${client.prefix}close\n${client.prefix}ping`, inline:true},
+        {name:`${lang('setting_prefix')} (${config.prefix})`,value:`${config.prefix}ping`, inline:true},
         {name: '\u200b', value: `\u200b`, inline: true },
       )
-      .setFooter({ text: `by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({dynamic: true})})
+      .setFooter({ text: `${lang('default_by')} ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({dynamic: true})})
       .setColor(0x8302fa)
       .setTimestamp();
 
       const row = new ActionRowBuilder()
         .addComponents(
-          new ButtonBuilder().setCustomId('explanation').setLabel('Explanation of use').setStyle(ButtonStyle.Primary),
-          new ButtonBuilder().setCustomId('settings').setLabel('Settings').setStyle(ButtonStyle.Secondary),
+          new ButtonBuilder().setCustomId('explanation').setLabel(lang('setting_explanation_u')).setStyle(ButtonStyle.Primary),
+          new ButtonBuilder().setCustomId('settings').setLabel(lang('setting')).setStyle(ButtonStyle.Secondary),
       );
 
 

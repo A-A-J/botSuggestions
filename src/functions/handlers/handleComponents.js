@@ -7,7 +7,7 @@ module.exports = (client) => {
         const componentFolder = readdirSync(`./src/components`);
         for (const folder of componentFolder) {
             const componentFiles = readdirSync(`./src/components/${folder}`)
-            const { buttons, modals } = client;
+            const { buttons, modals, selectMenus } = client;
             switch (folder) {
                 case "buttons":
                     for (const folders of componentFiles) {                       
@@ -31,6 +31,21 @@ module.exports = (client) => {
                                 try {
                                     const modal = require(`../../components/${folder}/${folders}/${files}`)
                                     modals.set(modal.data.name, modal);
+                                } catch (error) {
+                                    console.error(chalk.red(error))
+                                    table.addRow(folder,folders, "ERROR");
+                                }
+                            }
+                        }
+                        break;
+
+                    case "selectMenu":
+                        for (const folders of componentFiles) {
+                            const componentFolderInFolder = readdirSync(`./src/components/${folder}/${folders}`).filter((file) => file.endsWith('.js'));
+                            for (const files of componentFolderInFolder) {
+                                try {
+                                    const selectMenu = require(`../../components/${folder}/${folders}/${files}`)
+                                    selectMenus.set(selectMenu.data.name, selectMenu);
                                 } catch (error) {
                                     console.error(chalk.red(error))
                                     table.addRow(folder,folders, "ERROR");

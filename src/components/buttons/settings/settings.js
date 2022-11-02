@@ -8,24 +8,24 @@ module.exports = {
 		try {			
 			const modal = new ModalBuilder()
 				.setCustomId('saveSettings')
-				.setTitle('Chane Prefix');
+				.setTitle(lang('setting'));
 				
 			const prefix = new TextInputBuilder()
 				.setCustomId('prefix')
-				.setLabel("Enter Prefix")
+				.setLabel(lang('enterPrefix'))
 				.setPlaceholder("#, !, -, name")
 				.setStyle(TextInputStyle.Short)
 				.setValue(`${config.prefix}`);
 	
 			const channel = new TextInputBuilder()
 				.setCustomId('channel')
-				.setLabel("Enter id channel")
+				.setLabel(lang('enterIdChannel'))
 				.setStyle(TextInputStyle.Short)
 				.setValue(`${config.channel}`);
 
 			const line = new TextInputBuilder()
 				.setCustomId('line')
-				.setLabel("Enter url line")
+				.setLabel(lang('enterLine'))
 				.setStyle(TextInputStyle.Paragraph)
 				.setValue(`${config.line}`);
 			

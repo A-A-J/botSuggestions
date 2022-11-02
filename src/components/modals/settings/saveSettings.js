@@ -15,14 +15,14 @@ module.exports = {
             fs.writeFile("./src/config.json", JSON.stringify(config, null, 8), (err) => console.log(err));
             interaction.reply({embeds:[
                 new EmbedBuilder()
-                 .setTitle("Suggestion bot settings")
-                 .setDescription("The following changes have been applied:")
+                 .setTitle(lang('setting'))
+                 .setDescription(lang('setting_successfully'))
                  .addFields(
-                    {name:'Prefix', value:config.prefix, inline:true},
-                    {name:'Channel', value:`<#${config.channel}>\n${config.channel}`, inline:true},
+                    {name:lang('setting_prefixx'), value:config.prefix, inline:true},
+                    {name:lang('setting_channel'), value:`<#${config.channel}>\n${config.channel}`, inline:true},
                     {name: '\u200b', value: `\u200b`, inline: true },
-                    {name:'Channel', value:`\`\`\`${config.line}\`\`\``, inline:false},
-                    {name:'By', value:`<@${interaction.user.id}>\n(${interaction.user.id})`, inline:false},
+                    {name:lang('setting_line'), value:`\`\`\`${config.line}\`\`\``, inline:false},
+                    {name:lang('default_by'), value:`<@${interaction.user.id}>\n(${interaction.user.id})`, inline:false},
                  )
                  .setThumbnail(interaction.guild.iconURL({ dynamic: true, size: 1024}))
                  .setColor(0x8302fa)

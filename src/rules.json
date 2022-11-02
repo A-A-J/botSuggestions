@@ -1,20 +1,18 @@
-[
-    {
-        "t":"يجب عليك ان تحترم ردود الآخرين"
-    },
-    {
-        "t":"غير مسموح بالخروج عن مسار روم الاقتراح"
-    },
-    {
-        "t":"غير مسموح بالنزاعات الحادة في حال لم تتقبل الاقتراح"
-    },
-    {
-        "t":"في حال لم ينال اعجابك الاقتراح قم بنقر على ايموجي disLike"
-    },
-    {
-        "t":"غير مسموح بالردود المتكررة (SPAM)"
-    },
-    {
-        "t":"قوانين الخادم العامة يتم تطبيقها داخل هذا الروم"
-    }
-]
+{
+    "ar": [
+        "يجب عليك ان تحترم ردود الآخرين",
+        "غير مسموح بالخروج عن مسار روم الاقتراح",
+        "غير مسموح بالنزاعات الحادة في حال لم تتقبل الاقتراح",
+        "في حال لم ينال اعجابك الاقتراح قم بنقر على ايموجي disLike",
+        "غير مسموح بالردود المتكررة (SPAM)",
+        "قوانين الخادم العامة يتم تطبيقها داخل هذا الروم"
+    ],
+    "en": [
+        "You must respect the responses of others",
+        "Exit from the path of suggestion channel is not allowed",
+        "Sharp disputes are not allowed if you do not accept the proposal",
+        "In case you don't like the suggestion, click on the disLike emoji",
+        "Repetitive replies (SPAM) are not allowed",
+        "General server laws are applied within this channel"
+    ]
+}

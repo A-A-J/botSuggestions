@@ -1,7 +1,6 @@
 const chalk = require("chalk");
 module.exports = {
     name:"ready",
-    // once: true,
     async execute(client){
         console.info()
         console.info (chalk.blueBright('██████╗ ██████╗  █████╗ ██╗   ██╗ █████╗    ██████╗██╗   ██╗ ██████╗  ██████╗ ███████╗ ██████╗████████╗██╗ █████╗ ███╗  ██╗ ██████╗'))

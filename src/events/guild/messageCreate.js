@@ -10,22 +10,22 @@ module.exports = {
             if (message.channel.id == config.channel){
                 try {
                     if(message.mentions.repliedUser) return message.delete();
-                    if(config.displyShowSuggestions == 0){
-                        message.delete()
-                        message.channel.send({embeds:[
-                            new EmbedBuilder()
-                            .setAuthor({ name: message.author.username, iconURL: message.author.displayAvatarURL({dynamic: true}) })
-                            .setThumbnail(message.author.displayAvatarURL({dynamic:true}))
-                            .setDescription(`> ${message.content}`)
-                        ]}).then((m) => {
-                            m.react('👍🏻');
-                            m.react('👎🏻');
-                        })
+                    // if(config.displyShowSuggestions == 1){
+                        // message.delete()
+                        // message.channel.send({embeds:[
+                        //     new EmbedBuilder()
+                        //     .setAuthor({ name: message.author.username, iconURL: message.author.displayAvatarURL({dynamic: true}) })
+                        //     .setThumbnail(message.author.displayAvatarURL({dynamic:true}))
+                        //     .setDescription(`> ${message.content}`)
+                        // ]}).then((m) => {
+                        //     m.react('👍🏻');
+                        //     m.react('👎🏻');
+                        // })
                         
-                        message.channel.send({content:config.line})
-                    }else{
+                        // message.channel.send({content:config.line})
+                    // }else{
                         const messageThread = await message.startThread({
-                            name: `${message.author.username}-مناقشة-اقتراح`,
+                            name: `${message.author.username}-${lang('Discussion-Suggestion')}`,
                             autoArchiveDuration: 60
                         });
                         message.react('👍🏻');
@@ -33,17 +33,17 @@ module.exports = {
                         message.guild.channels.cache.find(Channel => Channel.id === messageThread.id).send({
                             embeds:[
                                 new EmbedBuilder()
-                                    .setTitle("قوانين روم الاقتراحات")
-                                    .setDescription(rules.map((r) => `- ${r.t}`).join('\n'))
+                                    .setTitle(lang('Suggestion-ch-rules'))
+                                    .setDescription(lang('rulesSuggestionChannel', null, true).join('\n'))
                                     .setColor(0x8302fa)
                                     .setTimestamp()
                             ]
                         }).then((msg) => msg.pin())
-                    }
+                    // }
                     return
                 } catch (error) {
-                    // message.channel.permissionOverwrites.set([ { id: message.guild.roles.everyone.id,  deny:'SendMessages' } ])
-                    message.reply(`تم إغلاق روم الاقتراحات مؤقتًا بسبب ظهور مشكلة برمجية، سيتم إتاحة الروم خلال الساعات القادمة!`)
+                    message.channel.permissionOverwrites.set([ { id: message.guild.roles.everyone.id,  deny:'SendMessages' } ])
+                    message.reply(lang('message_error_channel'))
                     console.error(error)
                 }
             }
@@ -55,7 +55,7 @@ module.exports = {
             let command = client.commands.get(cmd)
             if(!command) command = client.commands.get(client.aliases.get(cmd));
             if(!command.PrefixCommand) return
-            if(command.userPerms && !message.member.permissions.has(PermissionsBitField.resolve(command.userPerms || []))) return message.reply({ content:`❌ You don't have \`${command.userPerms}\` permission.`, ephemeral:true })
+            if(command.userPerms && !message.member.permissions.has(PermissionsBitField.resolve(command.userPerms || []))) return
             command.PrefixCommand.execute(message, client, args);
         } catch (error) {
             console.error(error)
