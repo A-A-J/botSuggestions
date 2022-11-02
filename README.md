@@ -36,5 +36,7 @@ In the second step, modify the bot token through the config.json file
 }
 ```
 
+
+# communicate
 For help or to solve problems you can through my private server in Discord
 https://discord.gg/NhdHGMEJP7
