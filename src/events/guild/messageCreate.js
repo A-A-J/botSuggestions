@@ -25,7 +25,7 @@ module.exports = {
                         // message.channel.send({content:config.line})
                     // }else{
                         const messageThread = await message.startThread({
-                            name: `${message.author.username}-${lang('Discussion-Suggestion')}`,
+                            name: lang('Discussion-Suggestion'),
                             autoArchiveDuration: 60
                         });
                         message.react('👍🏻');
