@@ -4,7 +4,7 @@ const ms = require('ms')
 const fs = require("fs")
 module.exports = {
   data: new SlashCommandBuilder()
-  .setName(lang('setting'))
+  .setName(lang('settingCommand'))
   .setDescription(lang('setting_des'))
   .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
   async execute(interaction, client){
@@ -28,6 +28,7 @@ module.exports = {
         .addComponents(
           new ButtonBuilder().setCustomId('explanation').setLabel(lang('setting_explanation_u')).setStyle(ButtonStyle.Primary),
           new ButtonBuilder().setCustomId('settings').setLabel(lang('setting')).setStyle(ButtonStyle.Secondary),
+          new ButtonBuilder().setCustomId('suggestion_view').setLabel(lang('suggestion_view')).setStyle(ButtonStyle.Secondary),
       );
 
 

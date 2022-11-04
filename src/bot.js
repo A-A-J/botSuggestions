@@ -1,19 +1,8 @@
 const config = require('./config.json')
-const { Client, Collection, Partials, GatewayIntentBits} = require("discord.js");
+const { Client, Collection, GatewayIntentBits} = require("discord.js");
 const fs = require("fs");
-const ms = require("ms");
 
-const client = new Client({
-    intents: [
-        GatewayIntentBits.Guilds,           GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent,   GatewayIntentBits.GuildMembers,
-        GatewayIntentBits.GuildBans,        GatewayIntentBits.GuildVoiceStates,
-        GatewayIntentBits.MessageContent,   GatewayIntentBits.GuildMessageReactions,
-    ],
-    partials: [Partials.Channel, Partials.Message, Partials.User, Partials.GuildMember, Partials.Reaction, Partials.GuildScheduledEvent, Partials.ThreadMember],
-    allowedMentions: { parse:['everyone', 'roles', 'users'] },
-    rest:{ timeout:ms('1m') }
-})
+const client = new Client({ intents: [ GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.MessageContent ] })
 
 // Create Value
 client.commands = new Collection();
