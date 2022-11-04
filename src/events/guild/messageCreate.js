@@ -1,5 +1,4 @@
 const config = require("../../config.json")
-const rules = require("../../rules.json")
 const { PermissionsBitField, EmbedBuilder } = require("discord.js");
 module.exports = {
     name: "messageCreate",
