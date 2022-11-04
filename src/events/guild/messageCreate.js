@@ -23,13 +23,14 @@ module.exports = {
                         // })
                         
                         // message.channel.send({content:config.line})
-                    // }else{
-                        const messageThread = await message.startThread({
-                            name: `${message.author.username}-${lang('Discussion-Suggestion')}`,
-                            autoArchiveDuration: 60
-                        });
+                        // }else{
                         message.react('👍🏻');
                         message.react('👎🏻');
+                        if(config.discussion == 0 ) return
+                        const messageThread = await message.startThread({
+                            name: lang('Discussion-Suggestion'),
+                            autoArchiveDuration: 60
+                        });
                         message.guild.channels.cache.find(Channel => Channel.id === messageThread.id).send({
                             embeds:[
                                 new EmbedBuilder()
