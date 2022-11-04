@@ -1,7 +1,7 @@
 const config = require("../../config.json")
+const fs = require('fs')
 const { SlashCommandBuilder, EmbedBuilder, ButtonStyle, ActionRowBuilder, ButtonBuilder, ComponentType, PermissionFlagsBits } = require('discord.js');
 const ms = require('ms')
-const fs = require("fs")
 module.exports = {
   data: new SlashCommandBuilder()
   .setName(lang('settingCommand'))
@@ -9,6 +9,15 @@ module.exports = {
   .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
   async execute(interaction, client){
     await interaction.deferReply({ ephemeral: true })
+    let cod = [];
+    const commandFolders = fs.readdirSync("./src/commands");
+    for (const folder of commandFolders) {
+        const commandFiles = fs .readdirSync(`./src/commands/${folder}`).filter((file) => file.endsWith(".js")).map((f) => f.split('.js').shift());
+        for(const f of commandFiles){
+          cod.push(f)
+        }
+    }
+
     const embed = new EmbedBuilder()
       .setTitle(lang('setting_info'))
       .setThumbnail(interaction.guild.iconURL({ dynamic: true, size: 1024}))
@@ -16,7 +25,7 @@ module.exports = {
         {name:lang('setting_dev'),value:'<@927741280946094131>', inline:true},
         {name:lang('setting_bot'),value:`<@${interaction.applicationId}>`, inline:true},
         {name: '\u200b', value: `\u200b`, inline: true },
-        {name:`${lang('setting_commands')} (/)`,value:`/close\n/ping`, inline:true},
+        {name:`${lang('setting_commands')} (/)`,value:"/"+cod.join('\n/'), inline:true},
         {name:`${lang('setting_prefix')} (${config.prefix})`,value:`${config.prefix}ping`, inline:true},
         {name: '\u200b', value: `\u200b`, inline: true },
       )
