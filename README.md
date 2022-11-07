@@ -28,7 +28,7 @@ In the second step, modify the bot token through the config.json file
 {
         "lang": "ar",
         "token": "",
-        "clientID": "1036391235600003192",
+        "clientID": "",
         "line": "https://media.discordapp.net/attachments/1020764935858430052/1021169821808865310/line_server_bravo.png",
         "displyShowSuggestions": 0,
         "prefix": "?",
