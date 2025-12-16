@@ -25,7 +25,7 @@ module.exports = {
                         message.react('👎🏻');
                         if(config.discussion == 1 ){
                             const messageThread = await message.startThread({ name: lang('Discussion-Suggestion'), autoArchiveDuration: 60 });
-                            message.guild.channels.cache.find(Channel => Channel.id === messageThread.id).send({
+                            await messageThread.send({
                                 embeds:[
                                     new EmbedBuilder()
                                     .setTitle(lang('Suggestion-ch-rules'))

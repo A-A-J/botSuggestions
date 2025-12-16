@@ -1,5 +1,4 @@
 const config = require("../../config.json")
-const fs = require('fs')
 const { SlashCommandBuilder, EmbedBuilder, ButtonStyle, ActionRowBuilder, ButtonBuilder, ComponentType, PermissionFlagsBits } = require('discord.js');
 const ms = require('ms')
 module.exports = {
@@ -9,14 +8,7 @@ module.exports = {
   .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
   async execute(interaction, client){
     await interaction.deferReply({ ephemeral: true })
-    let cod = [];
-    const commandFolders = fs.readdirSync("./src/commands");
-    for (const folder of commandFolders) {
-        const commandFiles = fs .readdirSync(`./src/commands/${folder}`).filter((file) => file.endsWith(".js")).map((f) => f.split('.js').shift());
-        for(const f of commandFiles){
-          cod.push(f)
-        }
-    }
+    const cod = Array.from(client.commands.keys()).sort((a, b) => a.localeCompare(b));
 
     const embed = new EmbedBuilder()
       .setTitle(lang('setting_info'))
