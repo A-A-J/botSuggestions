@@ -1,5 +1,6 @@
 const config = require("../../../config.json")
-const fs = require("fs");
+const path = require("node:path");
+const { writeFile } = require("node:fs/promises");
 const { EmbedBuilder } = require("discord.js");
 
 
@@ -12,8 +13,9 @@ module.exports = {
             config['prefix'] = interaction.fields.getTextInputValue('prefix');
             config['channel'] = interaction.fields.getTextInputValue('channel');
             config['line'] = interaction.fields.getTextInputValue('line');
-            fs.writeFile("./src/config.json", JSON.stringify(config, null, 8), (err) => console.log(err));
-            interaction.reply({embeds:[
+            const configPath = path.resolve(__dirname, "..", "..", "..", "config.json");
+            await writeFile(configPath, JSON.stringify(config, null, 8));
+            await interaction.reply({embeds:[
                 new EmbedBuilder()
                  .setTitle(lang('setting'))
                  .setDescription(lang('setting_successfully'))
@@ -30,7 +32,7 @@ module.exports = {
             ], ephemeral: true})
         } catch (error) {
 			console.error(error)
-			interaction.reply({content:error.message, ephemeral: true})
+			await interaction.reply({content:error.message, ephemeral: true})
         }
     }
     

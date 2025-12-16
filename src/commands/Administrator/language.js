@@ -1,7 +1,24 @@
 const config = require("../../config.json")
 const { SlashCommandBuilder, ActionRowBuilder, PermissionFlagsBits, SelectMenuBuilder } = require('discord.js');
-const ms = require('ms')
-const fs = require("fs")
+const path = require("node:path");
+const { readdir } = require("node:fs/promises");
+
+let languageMetaPromise = null;
+async function getLanguageMeta() {
+  if (!languageMetaPromise) {
+    languageMetaPromise = (async () => {
+      const langDir = path.resolve(__dirname, "..", "..", "lang");
+      const files = (await readdir(langDir)).filter((file) => file.endsWith(".json"));
+      return files.map((file) => {
+        const code = file.replace(/\.json$/i, "");
+        // eslint-disable-next-line global-require, import/no-dynamic-require
+        const data = require(path.resolve(langDir, file));
+        return { code, label: data.Lang, emoji: data.Flag };
+      });
+    })();
+  }
+  return languageMetaPromise;
+}
 module.exports = {
   data: new SlashCommandBuilder()
   .setName(lang('languages'))
@@ -10,16 +27,13 @@ module.exports = {
   async execute(interaction, client){
       try {
         await interaction.deferReply({ ephemeral: true })
-        const languages = fs.readdirSync('./src/lang').filter((file) => file.endsWith('.json'));
-        const arrayLanguages = []
-        for(const lang of languages){
-            const fileLang = require(`../../lang/${lang}`)
-            if(config.lang == lang.replace('.json', '').toString()){
-                arrayLanguages.push({label:fileLang.Lang, value:lang.replace('.json', '').toString(), emoji:fileLang.Flag, default: true})
-            }else{
-                arrayLanguages.push({label:fileLang.Lang, value:lang.replace('.json', '').toString(), emoji:fileLang.Flag})
-            }
-        }
+        const meta = await getLanguageMeta();
+        const arrayLanguages = meta.map(({ code, label, emoji }) => ({
+          label,
+          value: code,
+          emoji,
+          ...(config.lang === code ? { default: true } : {}),
+        }));
         const selectMenu = new ActionRowBuilder()
             .addComponents(
                 new SelectMenuBuilder()
